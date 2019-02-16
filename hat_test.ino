@@ -6,10 +6,11 @@
 # include <FastLED.h>
 # include <Keypad.h>
 # define NUM_LEDS  98
+#define NUM_WHITE   3
 //130 for white hat
 //115 for black hat
 # define LED_PIN 10     
-int brightNum = 100;
+int brightNum = 256;
 int r = 0;
 int g = 0;
 int b = 0;
@@ -45,7 +46,6 @@ void setup() {
   Serial.begin(9600);
   mode = 'A';
   key2.addEventListener(keypadEvent);
-   
 }
 
 void loop() {                                             
@@ -57,7 +57,11 @@ brightness();
   // put your main code here, to run repeatedly:
   key = key2.getKey();
   Serial.println(function);
-  
+  leds[0] = CRGB::Black;
+  leds[1] = CRGB::Black;
+  leds[2] = CRGB::Black;
+  leds[3] = CRGB::Black;
+  leds[4] = CRGB::Black;  
     if(function == '1'){
      function1();
     }else if(function == '2'){
@@ -91,7 +95,7 @@ brightness();
 void function1(){
   amount = 1;
   //if(function == '1'){
-    for(int i = 0; i < NUM_LEDS; i++){
+    for(int i = 4; i < NUM_LEDS; i++){
     leds[i] = color;
   }
   FastLED.show();
@@ -102,52 +106,120 @@ void function1(){
 }
 void function2(){
   if(function == '2'){
-   
-     //if(delay1.elapsed()){
-    for(int J = 0; J < NUM_LEDS-1; J++){
-      if(function == '2'){
-        leds[J+1] = CRGB::White;
-        leds[J] = color;
-        FastLED.show();
-        //check(2);
-    //interrupts();
-    //if(!delaytf){
-      //delay(lastDelay);
-    //}
-        myDelay(delayNum);
-      }
+   //int a = 49;
+     for(int j = 49; j < NUM_LEDS - 2; j++){
+      
+  //a++;
+  leds[j] = CRGB(255, 255, 255);
+  leds[0] = CRGB::Black;
+  leds[1] = CRGB::Black;
+  leds[2] = CRGB::Black;
+  leds[3] = CRGB::Black;
+  leds[4] = CRGB::Black;
+  FastLED.show();
+  leds[NUM_LEDS-j] = CRGB(255, 255, 255);
+  leds[0] = CRGB::Black;
+  leds[1] = CRGB::Black;
+  leds[2] = CRGB::Black;
+  leds[3] = CRGB::Black;
+  leds[4] = CRGB::Black;
+  FastLED.show();
+  leds[j+1] = CRGB(255, 255, 255);
+  leds[0] = CRGB::Black;
+  leds[1] = CRGB::Black;
+  leds[2] = CRGB::Black;
+  leds[3] = CRGB::Black;
+  leds[4] = CRGB::Black;
+  FastLED.show();
+  leds[NUM_LEDS-j-1] = CRGB(255, 255, 255);
+  leds[0] = CRGB::Black;
+  leds[1] = CRGB::Black;
+  leds[2] = CRGB::Black;
+  leds[3] = CRGB::Black;
+  leds[4] = CRGB::Black;
+  FastLED.show();
+  leds[j+2] = CRGB(255, 255, 255);
+  leds[0] = CRGB::Black;
+  leds[1] = CRGB::Black;
+  leds[2] = CRGB::Black;
+  leds[3] = CRGB::Black;
+  leds[4] = CRGB::Black;
+  FastLED.show();
+  leds[NUM_LEDS-j-2] = CRGB(255, 255, 255);
+  leds[0] = CRGB::Black;
+  leds[1] = CRGB::Black;
+  leds[2] = CRGB::Black;
+  leds[3] = CRGB::Black;
+  leds[4] = CRGB::Black;
+  FastLED.show();
+  
+  //FastLED.show();
+  leds[j] = color;
+  leds[NUM_LEDS-j] = color;
+  leds[0] = CRGB::Black;
+  leds[1] = CRGB::Black;
+  leds[2] = CRGB::Black;
+  leds[3] = CRGB::Black;
+  leds[4] = CRGB::Black;
+    Serial.println(j);
+    Serial.println(j);
+    myDelay(delayNum);
+    
+    Serial.println("wtf");
+  //Serial.print("HELLO");
+  //FastLED.show();
+  }
+  for(int i = 4; i < NUM_LEDS; i++){
+    leds[i] = color;
   }
   FastLED.show();
- // }
+  } 
   }
-  }
+  
   void function3() {
-    for(int i = 0; i < NUM_LEDS; i++){
-      leds[i] = CRGB::Black;
+    for(int i = 4; i < NUM_LEDS; i++){
+      leds[i] = CRGB::Blue;
+      FastLED.show();
     }
-    FastLED.show();
     myDelay(delayNum);
-    for(int j = 0; j < NUM_LEDS; j++){
-      leds[j] = color;
+    for(int i = 4; i < NUM_LEDS; i++){
+      leds[i] = CRGB::Purple;
+      FastLED.show();
     }
-    FastLED.show();
-  }
-  void setAll(int re,int gr, int bl){
-    for(int i = 0; i < NUM_LEDS; i++){
-      leds[i].setRGB( re, gr, bl);
+    myDelay(delayNum);
+    for(int i = 4; i < NUM_LEDS; i++){
+      leds[i] = CRGB::Red;
+      FastLED.show();
     }
-    FastLED.show();
+    myDelay(delayNum);
+    for(int i = 4; i < NUM_LEDS; i++){
+      leds[i] = CRGB::Yellow;
+      FastLED.show();
+    }
+    myDelay(delayNum);
+    for(int i = 4; i < NUM_LEDS; i++){
+      leds[i] = CRGB::Green;
+      FastLED.show();
+    }
+    myDelay(delayNum);
+    
   }
+//  void setAll(int re,int gr, int bl){
+//    for(int i = 4; i < NUM_LEDS; i++){
+//      leds[i].setRGB( re, gr, bl);
+//    }
+//    FastLED.show();
+//  }
   void function4(){
       if(function != '4') goto stupid;
-      for(int i = 0; i < NUM_LEDS; i++){
+      for(int i = 4; i < NUM_LEDS; i++){
         leds[i] = CRGB::Black;
         FastLED.show();
         delay4(delayNum, '4');
         Serial.println(function);
       }
       if(function != '4') goto stupid;
-      for(int i = 0; i < NUM_LEDS; i++){
+      for(int i = 4; i < NUM_LEDS; i++){
         leds[i] = color;
         FastLED.show();
         delay4(delayNum, '4');
@@ -192,7 +264,7 @@ void function2(){
 }
 void function6(){
     FastLED.clear();
-//    for(int i = 0; i < NUM_LEDS; i++){
+//    for(int i = 4; i < NUM_LEDS; i++){
 //      leds[i] = 
 //    }
 FastLED.show();
@@ -217,7 +289,7 @@ FastLED.show();
   }
   void meteorRain(byte meteorSize, byte meteorTrailDecay, boolean meteorRandomDecay) {  
   FastLED.clear();
-  for(int i = 0; i < NUM_LEDS; i++) {
+  for(int i = 4; i < NUM_LEDS; i++) {
     
     if(function != '6') goto hello;
     // fade brightness all LEDs one step
@@ -264,7 +336,7 @@ void fadeToBlack(int ledNo, byte fadeValue) {
  #endif  
 }
 void function7(){
-  for(int i = 0; i < NUM_LEDS; i++){
+  for(int i = 4; i < NUM_LEDS; i++){
     leds[i] = CRGB(random(0, r), random(0, g), random(0, b));
   }
   FastLED.show();
@@ -518,5 +590,4 @@ void brightness(){
    FastLED.setBrightness(brightNum);
   }
 }
-
 
