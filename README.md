@@ -28,9 +28,15 @@ Function 9: Sparkly rainbow, function 7 and 8 combined.
 Modes change the delay, color, and brightness. select the mode and press '*' to decrease that value and '+' to increase. For example, if 'D' was pressed, the blue value would be able to increase or decrease between 0 and 255.
 
 A: Delay
+
 B: Red
+
 C: Green
+
 D: Blue
+
 0: Brightness
+
 *: Decrease
+
 +: Increase
